@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "npm install"
+    "start": "npm install && npm install wilio"
   },
   "author": "",
   "license": "ISC",
