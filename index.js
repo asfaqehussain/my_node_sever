@@ -7,7 +7,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send(`Hey, this is my API running 🥳 ${process.env}`);
+  res.send(`Hey, this is my API running 🥳 ${process.env.TWILIO_ACCOUNT_SID},${process.env.TWILIO_API_KEY},${process.env.TWILIO_API_SECRET}`);
 });
 
 // app.get('/token/:identity', (req, res) => {
