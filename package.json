@@ -6,9 +6,7 @@
   "engines": {
     "node": "18.x"
   },
-  "scripts": {
-    "start": "npm install && npm install wilio"
-  },
+  
   "author": "",
   "license": "ISC",
   "dependencies": {
