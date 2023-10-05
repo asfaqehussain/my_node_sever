@@ -1,32 +1,28 @@
 require('dotenv').config();
 
 const express = require('express');
-// console.log('process.env', process.env);
-
-// const Twilio = require('twilio');
-const app = express();
 const AccessToken = require('twilio').jwt.AccessToken;
-// const AccessToken = Twilio.jwt.AccessToken;
 const ChatGrant = AccessToken.ChatGrant;
 
+const app = express();
+
 app.get('/', (req, res) => {
-  res.send('Hey this is my API running 🥳')
-})
+  res.send('Hey, this is my API running 🥳');
+});
 
 app.get('/token/:identity', (req, res) => {
   const identity = req.params.identity;
   const token = new AccessToken(
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_API_KEY,
-    process.env.TWILIO_API_SECRET,
+    process.env.TWILIO_API_SECRET
   );
-  console.log('process.env', process.env);
 
   token.identity = identity;
   token.addGrant(
     new ChatGrant({
       serviceSid: process.env.TWILIO_CHAT_SERVICE_SID,
-    }),
+    })
   );
 
   res.send({
@@ -35,10 +31,9 @@ app.get('/token/:identity', (req, res) => {
   });
 });
 
-app.listen(3001, function () {
+app.listen(3001, () => {
   console.log('Programmable Chat server running on port 3001!');
 });
-
 
 
 
