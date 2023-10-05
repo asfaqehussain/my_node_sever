@@ -7,10 +7,17 @@ const express = require('express');
 
 const secrets = require('vercel-secrets');
 
-const secretApiKey = await secrets.get('TWILIO_ACCOUNT_SID');
+async function main() {
+  try {
+    const secretApiKey = await secrets.get('MY_SECRET_API_KEY');
+    console.log(`API Key: ${secretApiKey}`);
+  } catch (error) {
+    console.error('Error retrieving the secret:', error);
+  }
+}
 
-
-
+// Call the async function to start the execution
+main();
 
 
 
