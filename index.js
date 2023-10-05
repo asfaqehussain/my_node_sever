@@ -4,6 +4,21 @@ const express = require('express');
 // const AccessToken = require('twilio').jwt.AccessToken;
 // const ChatGrant = AccessToken.ChatGrant;
 
+
+const secrets = require('vercel-secrets');
+
+const secretApiKey = await secrets.get('TWILIO_ACCOUNT_SID');
+
+
+
+
+
+
+
+
+
+
+
 const app = express();
 
 app.get('/', (req, res) => {
