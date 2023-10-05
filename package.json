@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "npm install && node index.js"
+    "start": "npm install"
   },
   "author": "",
   "license": "ISC",
