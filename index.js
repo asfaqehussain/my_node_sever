@@ -1,12 +1,12 @@
 require('dotenv').config();
 
-// const Twilio = require('twilio');
+const Twilio = require('twilio');
 const express = require('express');
 // console.log('process.env', process.env);
 
 const app = express();
-const AccessToken = require('twilio').jwt.AccessToken;
-// const AccessToken = Twilio.jwt.AccessToken;
+// const AccessToken = require('twilio').jwt.AccessToken;
+const AccessToken = Twilio.jwt.AccessToken;
 const ChatGrant = AccessToken.ChatGrant;
 
 app.get('/', (req, res) => {
