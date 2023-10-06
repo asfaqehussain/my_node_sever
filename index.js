@@ -1,85 +1,27 @@
-// require('dotenv').config();
+require('dotenv').config();
+const express = require("express");
+var app = express();
+const chat = require('./chat');
 
-// const express = require('express');
-// // const AccessToken = require('twilio').jwt.AccessToken;
-// // const ChatGrant = AccessToken.ChatGrant;
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
-
-// const secrets = require('vercel-secrets');
-
-// async function main() {
-//   try {
-//     const secretApiKey = await secrets.get('MY_SECRET_API_KEY');
-//     console.log(`API Key: ${secretApiKey}`);
-//   } catch (error) {
-//     console.error('Error retrieving the secret:', error);
-//   }
-// }
-
-// // Call the async function to start the execution
-// main();
-
-
-
-
-
-
-
-
-// const app = express();
-
-// app.get('/', (req, res) => {
-//   res.send(`Hey, this is my API running 🥳 ${process.env.TWILIO_ACCOUNT_SID},${process.env.TWILIO_API_KEY},${process.env.TWILIO_API_SECRET}`);
-// });
-
-// // app.get('/token/:identity', (req, res) => {
-// //   const identity = req.params.identity;
-// //   const token = new AccessToken(
-// //     process.env.TWILIO_ACCOUNT_SID,
-// //     process.env.TWILIO_API_KEY,
-// //     process.env.TWILIO_API_SECRET
-// //   );
-
-// //   token.identity = identity;
-// //   token.addGrant(
-// //     new ChatGrant({
-// //       serviceSid: process.env.TWILIO_CHAT_SERVICE_SID,
-// //     })
-// //   );
-
-// //   res.send({
-// //     identity: token.identity,
-// //     jwt: token.toJwt(),
-// //   });
-// // });
-
-// // app.listen(3001, () => {
-// //   console.log('Programmable Chat server running on port 3001!');
-// // });
-
-// export default app;
-
-
-
-
-
-
-
-// Simple code for testing
-
-const express = require('express');
-
-const app = express();
-const PORT = 4000;
-
-app.listen(PORT, () => {
-  console.log(`API listening on PORT ${PORT} `);
+app.get("/", function (request, response) {
+    response.send("Server Running");
 })
 
-app.get('/', (req, res) => {
-  res.send('Hey this is my API running 🥳');
+app.get("/gettoken/:userName", function (request, response) {
+    let userName = request.params.userName;
+    let token = chat.getToken(userName);
+    response.send(JSON.stringify(token));
+    // response.send("Hello World! get");
 })
 
-app.get('/about', (req, res) => {
-  res.send('This is my about route..... ');
-})
+app.listen(3000, function () {
+    console.log("Started application on port %d", 3000);
+});
