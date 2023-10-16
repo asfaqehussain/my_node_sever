@@ -44,11 +44,11 @@ Replace `your_account_sid`, `your_auth_token`, and `your_twilio_phone_number` wi
 
 2. Access the server by visiting `http://localhost:3000` in your web browser.
 
-3. To send an SMS, access `http://localhost:3000/send-sms` with the `to` and `message` query parameters.
+3. To send an SMS, access `http://localhost:3000/send-sms` with the to and message query parameters.
 
     Example: `http://localhost:3000/send-sms?to=RECIPIENT_NUMBER&message=Hello+from+Twilio`
 
-That's it! You now have a Node.js server set up to get the user tokenusing the Twilio API.
+That's it! You now have a Node.js server set up to get the user token using the Twilio API.
 
 ## Conclusion
 
