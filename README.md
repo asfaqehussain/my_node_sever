@@ -3,6 +3,7 @@
 # Twilio Node.js Server Project
 
 In this project, we will create a Node.js server that utilizes the Twilio API to send SMS messages. 
+Required node version V18+
 
 ## Prerequisites
 
